@@ -10,10 +10,10 @@ export function getMoney(playerName) {
 export function setMoney(playername, money) {
     try {
         moneyDB.set(playername, money);
-        return "§aBaşarıyla Ayarlandı.";
+        return translate("basariyla.ayarlandi");
     } catch (e) { console.log(e); }
 
-    return "§cBir Hata Oluştu!";
+    return translate("bir.hata.olustu");
 }
 
 export function addMoney(playername, money) {
@@ -22,10 +22,10 @@ export function addMoney(playername, money) {
         var newMoney = oldMoney + money;
 
         setMoney(playername, newMoney);
-        return "§aBaşarıyla Eklendi.";
+        return translate("basariyla.eklendi");
     } catch (e) { console.log(e); }
 
-    return "§cBir Hata Oluştu!";
+    return translate("bir.hata.olustu");
 }
 
 export function removeMoney(playername, money) {
@@ -34,11 +34,15 @@ export function removeMoney(playername, money) {
         try {
             var newMoney = oldMoney - money;
             setMoney(playername, newMoney);
-            return "§aBaşarıyla Silindi.";
+            return translate("basariyla.silindi");
         } catch (e) { console.log(e); }
 
-        return "§cBir Hata Oluştu!";
+        return translate("bir.hata.olustu");
     }
 
-    return "§cPara Yetersiz!";
+    return translate("para.yetersiz");
 }
+
+function translate(key) {
+    return { "rawtext": [{ "translate": key }] };
+};
