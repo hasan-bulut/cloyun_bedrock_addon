@@ -1,5 +1,6 @@
 import { world, system } from "@minecraft/server";
 import { getMoney, setMoney, addMoney, removeMoney } from "./economy/money";
+import { sell } from "./economy/sell";
 import { commands_lang } from "./commands_lang";
 
 const commandPrefix = "#";
@@ -15,19 +16,19 @@ world.beforeEvents.chatSend.subscribe(event => {
 
         commands_lang.forEach(commands => {
             switch (msgList[0]) {
-                case commands[0]:
+                case commands[0]: // #param
                     sender.sendMessage([{ "translate": "paran" }, { "text": getMoney(sender.name) + "TL" }]);
                     break;
-                case commands[1]:
+                case commands[1]: // #paraayarla
                     sender.sendMessage(setMoney(sender.name, Number(msgList[1])));
                     break;
-                case commands[2]:
+                case commands[2]: // #paraekle
                     sender.sendMessage(addMoney(sender.name, Number(msgList[1])));
                     break;
-                case commands[3]:
+                case commands[3]: // #parasil
                     sender.sendMessage(removeMoney(sender.name, Number(msgList[1])));
                     break;
-                case commands[4]:
+                case commands[4]: // #paragonder
                     var playerName = msgList[1];
                     var amount = msgList[2];
                     if (world.getAllPlayers.some(player => player.name === playerName)) {
@@ -37,6 +38,14 @@ world.beforeEvents.chatSend.subscribe(event => {
                     } else {
                         sender.sendMessage(translate("bu.oyuncu.aktif.degil"));
                     }
+                    break;
+                case commands[5]: // #satel
+                    const container = sender.getComponent('inventory')?.container;
+                    const item = container.getItem(sender.selectedSlot);
+                    sell(item);
+                    break;
+                case commands[6]: // #sathepsi
+
                     break;
             }
         })
