@@ -3,44 +3,47 @@ import { JsonDatabase } from "./../database/database";
 const moneyDB = new JsonDatabase("moneyDatabase");
 moneyDB.load();
 
-export function getMoney(playerName) {
-    return Number(moneyDB.get(playerName)) ?? 0;
+export function getMoney(player) {
+    return Number(moneyDB.get(player.name)) ?? 0;
 }
 
-export function setMoney(playername, money) {
+export function setMoney(player, money) {
     try {
-        moneyDB.set(playername, money);
-        return translate("basariyla.ayarlandi");
-    } catch (e) { console.log(e); }
+        moneyDB.set(player.name, money);
+        player.sendMessage(translate("basariyla.ayarlandi"));
+        return;
+    } catch (e) { console.warn(e); }
 
-    return translate("bir.hata.olustu");
+    player.sendMessage(translate("bir.hata.olustu"));
 }
 
-export function addMoney(playername, money) {
+export function addMoney(player, money) {
     try {
-        var oldMoney = getMoney(playername);
+        var oldMoney = getMoney(player);
         var newMoney = oldMoney + money;
 
-        setMoney(playername, newMoney);
-        return translate("basariyla.eklendi");
-    } catch (e) { console.log(e); }
+        moneyDB.set(player.name, newMoney);
+        player.sendMessage(translate("basariyla.eklendi"));
+        return;
+    } catch (e) { console.warn(e); }
 
-    return translate("bir.hata.olustu");
+    player.sendMessage(translate("bir.hata.olustu"));
 }
 
-export function removeMoney(playername, money) {
-    var oldMoney = getMoney(playername);
+export function removeMoney(player, money) {
+    var oldMoney = getMoney(player);
     if (oldMoney >= money) {
         try {
             var newMoney = oldMoney - money;
-            setMoney(playername, newMoney);
-            return translate("basariyla.silindi");
-        } catch (e) { console.log(e); }
+            moneyDB.set(player.name, newMoney);
+            player.sendMessage(translate("basariyla.silindi"));
+            return;
+        } catch (e) { console.warn(e); }
 
-        return translate("bir.hata.olustu");
+        player.sendMessage(translate("bir.hata.olustu"));
     }
 
-    return translate("para.yetersiz");
+    player.sendMessage(translate("para.yetersiz"));
 }
 
 function translate(key) {
