@@ -5,12 +5,12 @@ import { commands_lang } from "./commands_lang";
 
 const commandPrefix = "#";
 
-world.afterEvents.chatSend.subscribe(event => {
+world.beforeEvents.chatSend.subscribe(event => {
     var sender = event.sender;
     var msg = event.message;
 
     if (msg.startsWith(commandPrefix)) {
-        // event.cancel = true;
+        event.cancel = true;
         msg = msg.substring(1);
         var msgList = msg.split(" ");
 
@@ -42,7 +42,9 @@ world.afterEvents.chatSend.subscribe(event => {
                 case commands[5]: // #satel
                     const container = sender.getComponent('inventory')?.container;
                     const item = container.getItem(sender.selectedSlot);
-                    sell(sender, item);
+                    system.run(() => {
+                        sell(sender, item);
+                    });
                     break;
                 case commands[6]: // #sathepsi
 
