@@ -1,9 +1,12 @@
 pack.name=Economy Addon
 pack.description=Economy Addon by CLoyun
-paran=My Money: 
+paran=My Money: %1TL
 bu.oyuncu.aktif.degil=This player is not active!
 bir.hata.olustu=§cAn Error Occurred!
-basariyla.ayarlandi=§aSuccessfully Set!
-basariyla.eklendi=§aSuccessfully Added!
-basariyla.silindi=§aSuccessfully Deleted!
+setmoney.message= §aYour mmoney has been set to %1TL.
+addmoney.message= §a%1TL has been added to your money.
+removemoney.message= §a%1TL has been removed from your money.
 para.yetersiz=§cInsufficient Money!
+bu.komudu.kullanma.iznin.yok=You do not have permission to use this command.
+bu.esya.satilmiyor=This item is not for sale.
+sell.message=You sold %1 units of %2 for %3TL each.

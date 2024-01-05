@@ -18,11 +18,11 @@ world.beforeEvents.chatSend.subscribe(event => {
         commands_lang.forEach(commands => {
             switch (msgList[0]) {
                 case commands[0]: // #param
-                    sender.sendMessage([{ "translate": "paran" }, { "text": getMoney(sender) + "TL" }]);
+                    sender.sendMessage(translate("paran", [getMoney(sender).toString()]));
                     break;
                 case commands[1]: // #paraayarla
                     if (!sender.getTags().includes(cmdPerm)) {
-                        sender.sendMessage("bu komudu kullanma yetkin yok");
+                        sender.sendMessage(translate("bu.komudu.kullanma.iznin.yok"));
                         break;
                     }
                     var targetName = msgList[1];
@@ -43,7 +43,7 @@ world.beforeEvents.chatSend.subscribe(event => {
                     break;
                 case commands[2]: // #paraekle
                     if (!sender.getTags().includes(cmdPerm)) {
-                        sender.sendMessage("bu komudu kullanma yetkin yok");
+                        sender.sendMessage(translate("bu.komudu.kullanma.iznin.yok"));
                         break;
                     }
                     var targetName = msgList[1];
@@ -64,7 +64,7 @@ world.beforeEvents.chatSend.subscribe(event => {
                     break;
                 case commands[3]: // #parasil
                     if (!sender.getTags().includes(cmdPerm)) {
-                        sender.sendMessage("bu komudu kullanma yetkin yok");
+                        sender.sendMessage(translate("bu.komudu.kullanma.iznin.yok"));
                         break;
                     }
                     var targetName = msgList[1];
@@ -111,6 +111,10 @@ world.beforeEvents.chatSend.subscribe(event => {
     }
 });
 
-function translate(key) {
+function translate(key, params) {
+    if (params.length > 0) {
+        return { "translate": key, "with": params };
+
+    }
     return { "translate": key };
 };

@@ -6,9 +6,9 @@ export function sell(player, item) {
         container.setItem(player.selectedSlot, undefined)
         var money = sellableItems[item.typeId] * item.amount;
         addMoney(player, money, false);
-        player.sendMessage(item.amount + " tane " + capitalizeEveryWord(item?.typeId) + " " + money + "TL'ye sattın.");
+        player.sendMessage(translate("sell.message", [item.amount.toString(), capitalizeEveryWord(item?.typeId), money.toString()]));
     } else {
-        player.sendMessage("Bu eşya satılmıyor");
+        player.sendMessage(translate("bu.esya.satilmiyor"));
     }
 }
 
@@ -23,8 +23,12 @@ function capitalizeEveryWord(itemName) {
     return capitalizedSentence;
 }
 
-function translate(key) {
-    return { "rawtext": [{ "translate": key }] };
+function translate(key, params) {
+    if (params?.length > 0) {
+        return { "translate": key, "with": params };
+
+    }
+    return { "translate": key };
 };
 
 const sellableItems = {

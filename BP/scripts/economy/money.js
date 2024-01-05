@@ -10,7 +10,7 @@ export function getMoney(player) {
 export function setMoney(player, money, sendMsg = true) {
     try {
         moneyDB.set(player.name, money);
-        if (sendMsg) player.sendMessage("Paranız " + money + "TL olarak ayarlandı.");//translate("basariyla.ayarlandi"));
+        if (sendMsg) player.sendMessage(translate("setmoney.message", [money.toString()]));
         return;
     } catch (e) { console.warn(e); }
 
@@ -23,7 +23,7 @@ export function addMoney(player, money, sendMsg = true) {
         var newMoney = oldMoney + money;
 
         moneyDB.set(player.name, newMoney);
-        if (sendMsg) player.sendMessage("Paranıza " + money + "TL eklendi.");//translate("basariyla.eklendi"));
+        if (sendMsg) player.sendMessage(translate("addmoney.message", [money.toString()]));
         return;
     } catch (e) { console.warn(e); }
 
@@ -36,7 +36,7 @@ export function removeMoney(player, money, sendMsg = true) {
         try {
             var newMoney = oldMoney - money;
             moneyDB.set(player.name, newMoney);
-            if (sendMsg) player.sendMessage("Paranızdan " + money + "TL silindi.");//translate("basariyla.silindi"));
+            if (sendMsg) player.sendMessage(translate("removemoney.message", [money.toString()]));
             return;
         } catch (e) { console.warn(e); }
 
@@ -46,6 +46,10 @@ export function removeMoney(player, money, sendMsg = true) {
     if (sendMsg) player.sendMessage(translate("para.yetersiz"));
 }
 
-function translate(key) {
-    return { "rawtext": [{ "translate": key }] };
+function translate(key, params) {
+    if (params.length > 0) {
+        return { "translate": key, "with": params };
+
+    }
+    return { "translate": key };
 };

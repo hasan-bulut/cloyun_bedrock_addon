@@ -1,9 +1,12 @@
 pack.name=Ekonomi Eklentisi
 pack.description=CLOyun tarafından Ekonomi Eklentisi
-paran=Paran: 
+paran=Paran: %1TL
 bu.oyuncu.aktif.degil=Bu oyuncu aktif değil!
 bir.hata.olustu=§cBir Hata Oluştu!
-basariyla.ayarlandi=§aBaşarıyla Ayarlandı.
-basariyla.eklendi=§aBaşarıyla Eklendi.
-basariyla.silindi=§aBaşarıyla Silindi.
+setmoney.message=§aParanız %1TL olarak ayarlandı.
+addmoney.message=§aParanıza %1TL eklendi.
+removemoney.message=§aParanızdan %1TL silindi.
 para.yetersiz=§cPara Yetersiz!
+bu.komudu.kullanma.iznin.yok=Bu komudu kullanma iznin yok.
+bu.esya.satilmiyor=Bu eşya satılmıyor.
+sell.message=%1 tane %2 %3TL'ye sattın.
