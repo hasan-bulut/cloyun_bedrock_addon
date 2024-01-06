@@ -1,6 +1,7 @@
 import { addMoney } from "./money";
 
-export function sell(player, item) {
+export function sellHand(player, container) {
+    const item = container.getItem(player.selectedSlot);
     if (sellableItems.hasOwnProperty(item?.typeId)) {
         const container = player.getComponent('inventory')?.container;
         container.setItem(player.selectedSlot, undefined)
@@ -9,6 +10,28 @@ export function sell(player, item) {
         player.sendMessage(translate("sell.message", [item.amount.toString(), capitalizeEveryWord(item?.typeId), money.toString()]));
     } else {
         player.sendMessage(translate("bu.esya.satilmiyor"));
+    }
+}
+
+export function sellAll(player, container) {
+    var selledItemCount = 0;
+    var totalMoney = 0;
+    for (let i = 0; i < 36; i++) {
+        const item = container.getItem(i);
+        if (sellableItems.hasOwnProperty(item?.typeId)) {
+            const container = player.getComponent('inventory')?.container;
+            container.setItem(i, undefined)
+            var money = sellableItems[item.typeId] * item.amount;
+            addMoney(player, money, false);
+            player.sendMessage(translate("sell.message", [item.amount.toString(), capitalizeEveryWord(item?.typeId), money.toString()]));
+            selledItemCount++;
+            totalMoney += money;
+        }
+    }
+    if (selledItemCount > 0) {
+        player.sendMessage(selledItemCount + " tane eşya satıldı. Toplam " + totalMoney + "TL kazandınız.");
+    } else {
+        player.sendMessage("Envanterinizde satılabilecek eşya bulunmuyor.");
     }
 }
 

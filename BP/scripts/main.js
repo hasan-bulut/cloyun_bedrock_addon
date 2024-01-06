@@ -1,6 +1,6 @@
 import { world, system } from "@minecraft/server";
 import { getMoney, setMoney, addMoney, removeMoney } from "./economy/money";
-import { sell } from "./economy/sell";
+import { sellHand, sellAll } from "./economy/sell";
 import { commands_lang } from "./commands_lang";
 
 const commandPrefix = "#";
@@ -14,6 +14,7 @@ world.beforeEvents.chatSend.subscribe(event => {
         event.cancel = true;
         msg = msg.substring(1);
         var msgList = msg.split(" ");
+        const container = sender.getComponent('inventory')?.container;
 
         commands_lang.forEach(commands => {
             switch (msgList[0]) {
@@ -97,13 +98,14 @@ world.beforeEvents.chatSend.subscribe(event => {
                     }
                     break;
                 case commands[5]: // #satel
-                    const container = sender.getComponent('inventory')?.container;
-                    const item = container.getItem(sender.selectedSlot);
                     system.run(() => {
-                        sell(sender, item);
+                        sellHand(sender, container);
                     });
                     break;
                 case commands[6]: // #sathepsi
+                    system.run(() => {
+                        sellAll(sender, container);
+                    });
 
                     break;
             }
