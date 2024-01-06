@@ -1,7 +1,7 @@
 {
 	"type": "minecraftBedrock",
-	"name": "Ekonomi Eklentisi",
-	"namespace": "eco",
+	"name": "CLOyun Eklentisi",
+	"namespace": "cloyun",
 	"authors": [
 		"playerhasan1903"
 	],
@@ -37,7 +37,7 @@
 			[
 				"simpleRewrite",
 				{
-					"packName": "Ekonomi Eklentisi"
+					"packName": "CLOyun Eklentisi"
 				}
 			]
 		]
