@@ -9,9 +9,9 @@ Bu eklenti [Cloyun](https://www.youtube.com/cloyun) takipçileri için özel ola
 ### Para Sistemi
 - #param -> Paranızı gösterir
 - #paragonder -> Belirtiğiniz kişiye kendi paranızdan gönderir
-- #paraekle -> Belirtiğiniz kişiye para ekler (OP gerekir!)
-- #parasil -> Belirtiğiniz kişinin parasını siler (OP gerekir!)
-- #paraayarla -> Belirtiğiniz kişinin parasını ayarlar (OP gerekir!)
+- #paraekle -> Belirtiğiniz kişiye para ekler **(OP gerekir!)**
+- #parasil -> Belirtiğiniz kişinin parasını siler **(OP gerekir!)**
+- #paraayarla -> Belirtiğiniz kişinin parasını ayarlar **(OP gerekir!)**
 
 ### Satış Sistemi
 - #satel -> Elinizdeki eşya satılabiliyorsa satar
