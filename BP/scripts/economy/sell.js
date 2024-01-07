@@ -29,7 +29,7 @@ export function sellAll(player, container) {
         }
     }
     if (selledItemCount > 0) {
-        player.sendMessage(translate("sellall.message", selledItemCount, totalMoney));
+        player.sendMessage(translate("sellall.message", [selledItemCount.toString(), totalMoney.toString()]));
     } else {
         player.sendMessage(translate("envanterinizde.satilabilecek.esya.bulunmuyor"));
     }
