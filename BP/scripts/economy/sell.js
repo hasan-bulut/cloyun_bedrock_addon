@@ -24,7 +24,7 @@ export function sellAll(player, container) {
             var money = sellableItems[item.typeId] * item.amount;
             addMoney(player, money, false);
             player.sendMessage(translate("sell.message", [item.amount.toString(), capitalizeEveryWord(item?.typeId), money.toString()]));
-            selledItemCount++;
+            selledItemCount += item.amount;
             totalMoney += money;
         }
     }

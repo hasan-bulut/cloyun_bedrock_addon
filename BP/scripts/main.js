@@ -71,12 +71,7 @@ world.beforeEvents.chatSend.subscribe(event => {
                     var targetName = msgList[1];
                     if (targetName == "@s") {
                         removeMoney(sender, Number(msgList[2]));
-                    } else if (targetName == "@a") {
-                        world.getAllPlayers().forEach(player => {
-                            removeMoney(player, Number(msgList[2]));
-                        });
-                    }
-                    else {
+                    } else {
                         if (world.getAllPlayers().some(player => player.name === targetName)) {
                             removeMoney(world.getPlayers({ name: targetName })[0], Number(msgList[2]));
                         } else {
