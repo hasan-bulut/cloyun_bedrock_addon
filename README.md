@@ -8,10 +8,10 @@ Bu eklenti [Cloyun](https://www.youtube.com/cloyun) takipçileri için özel ola
 **Tüm komutların prefixi '#'tir! Eklentinin içinden değiştirebilirsiniz.**
 ### Para Sistemi
 - #param -> Paranızı gösterir
-- #paragonder -> Belirtiğiniz kişiye kendi paranızdan gönderir
-- #paraekle -> Belirtiğiniz kişiye para ekler **(OP gerekir!)**
-- #parasil -> Belirtiğiniz kişinin parasını siler **(OP gerekir!)**
-- #paraayarla -> Belirtiğiniz kişinin parasını ayarlar **(OP gerekir!)**
+- #paragonder <oyuncu_ismi> -> Belirtiğiniz kişiye kendi paranızdan gönderir
+- #paraekle <@s, @a, oyuncu_ismi> -> Belirtiğiniz kişiye para ekler **('cmdPerm' tagı olanlar kullanabilir!)**
+- #parasil <@s, oyuncu_ismi> -> Belirtiğiniz kişinin parasını siler **('cmdPerm' tagı olanlar kullanabilir!)**
+- #paraayarla <@s, @a, oyuncu_ismi> -> Belirtiğiniz kişinin parasını ayarlar **('cmdPerm' tagı olanlar kullanabilir!)**
 
 ### Satış Sistemi
 - #satel -> Elinizdeki eşya satılabiliyorsa satar
