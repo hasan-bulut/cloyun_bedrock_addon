@@ -113,7 +113,7 @@ world.beforeEvents.chatSend.subscribe(event => {
     }
 });
 
-function translate(key, params) {
+function translate(key, params = []) {
     if (params.length > 0) {
         return { "translate": key, "with": params };
 
