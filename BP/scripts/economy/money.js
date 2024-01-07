@@ -47,7 +47,7 @@ export function removeMoney(player, money, sendMsg = true) {
 }
 
 function translate(key, params) {
-    if (params.length > 0) {
+    if (params?.length > 0) {
         return { "translate": key, "with": params };
 
     }

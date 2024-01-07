@@ -29,9 +29,9 @@ export function sellAll(player, container) {
         }
     }
     if (selledItemCount > 0) {
-        player.sendMessage(selledItemCount + " tane eşya satıldı. Toplam " + totalMoney + "TL kazandınız.");
+        player.sendMessage(translate("sellall.message", selledItemCount, totalMoney));
     } else {
-        player.sendMessage("Envanterinizde satılabilecek eşya bulunmuyor.");
+        player.sendMessage(translate("envanterinizde.satilabilecek.esya.bulunmuyor"));
     }
 }
 

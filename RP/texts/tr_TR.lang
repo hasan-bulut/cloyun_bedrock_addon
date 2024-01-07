@@ -10,3 +10,5 @@ para.yetersiz=§cPara Yetersiz!
 bu.komudu.kullanma.iznin.yok=Bu komudu kullanma iznin yok.
 bu.esya.satilmiyor=Bu eşya satılmıyor.
 sell.message=%1 tane %2 %3TL'ye sattın.
+sellall.message=%1 tane eşya satıldı. Toplam %2TL kazandınız.
+envanterinizde.satilabilecek.esya.bulunmuyor=Envanterinizde satılabilecek eşya bulunmuyor.
