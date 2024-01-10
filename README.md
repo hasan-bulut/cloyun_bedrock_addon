@@ -20,7 +20,10 @@ Bu eklenti [Cloyun](https://www.youtube.com/cloyun) takipçileri için özel ola
 - #sathepsi -> Envanterinizdeki satılabilecek tüm eşyaları satar
 
 ### Eklenecek Özellikler
-- Market Sistemi
+**Projenin Yıldız sayısı yanlarında yazan Yıldız sayılarına ulaştığı zaman eklenicektir!**
+- **Satış Sistemi** -> Otosat 🌟5
+- Tamir Sistemi 🌟7
+- Market Sistemi 🌟12
+- Takas Sistemi 🌟20
+- ChestShop 🌟30
 - [Discord Sunucumuzda İsteklerini Belirtebilirsin](https://discord.gg/gj9CmAAGDS)
-
-
