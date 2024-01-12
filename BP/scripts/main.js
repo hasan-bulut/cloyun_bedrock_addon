@@ -1,6 +1,6 @@
 import { world, system } from "@minecraft/server";
 import { getMoney, setMoney, addMoney, removeMoney } from "./economy/money";
-import { sellHand, sellAll } from "./economy/sell";
+import { sellHand, sellAll, addSell, delSell } from "./economy/sell";
 import { commands_lang } from "./commands_lang";
 
 const commandPrefix = "#";
@@ -14,7 +14,6 @@ world.beforeEvents.chatSend.subscribe(event => {
         event.cancel = true;
         msg = msg.substring(1);
         var msgList = msg.split(" ");
-        const container = sender.getComponent('inventory')?.container;
 
         commands_lang.forEach(commands => {
             switch (msgList[0]) {
@@ -94,14 +93,28 @@ world.beforeEvents.chatSend.subscribe(event => {
                     break;
                 case commands[5]: // #satel
                     system.run(() => {
-                        sellHand(sender, container);
+                        sellHand(sender);
                     });
                     break;
                 case commands[6]: // #sathepsi
                     system.run(() => {
-                        sellAll(sender, container);
+                        sellAll(sender);
                     });
-
+                    break;
+                case commands[7]: // #satekle
+                    if (!sender.getTags().includes(cmdPerm)) {
+                        sender.sendMessage(translate("bu.komudu.kullanma.iznin.yok"));
+                        break;
+                    }
+                    var price = msgList[1];
+                    addSell(sender, Number(price));
+                    break;
+                case commands[8]: // #satsil
+                    if (!sender.getTags().includes(cmdPerm)) {
+                        sender.sendMessage(translate("bu.komudu.kullanma.iznin.yok"));
+                        break;
+                    }
+                    delSell(sender);
                     break;
             }
         })

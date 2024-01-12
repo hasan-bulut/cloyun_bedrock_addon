@@ -1,11 +1,16 @@
+import { system, world } from "@minecraft/server";
 import { addMoney } from "./money";
+import { JsonDatabase } from "./../database/database";
 
-export function sellHand(player, container) {
+const sellableItemsDB = new JsonDatabase("sellableItem").load();
+
+export function sellHand(player) {
+    const container = player.getComponent('inventory')?.container;
     const item = container.getItem(player.selectedSlot);
-    if (sellableItems.hasOwnProperty(item?.typeId)) {
+    if (sellableItemsDB.has(item?.typeId)) {
         const container = player.getComponent('inventory')?.container;
         container.setItem(player.selectedSlot, undefined)
-        var money = sellableItems[item.typeId] * item.amount;
+        var money = sellableItemsDB.get(item.typeId) * item.amount;
         addMoney(player, money, false);
         player.sendMessage(translate("sell.message", [item.amount.toString(), capitalizeEveryWord(item?.typeId), money.toString()]));
     } else {
@@ -13,15 +18,16 @@ export function sellHand(player, container) {
     }
 }
 
-export function sellAll(player, container) {
+export function sellAll(player) {
     var selledItemCount = 0;
     var totalMoney = 0;
+    const container = player.getComponent('inventory')?.container;
     for (let i = 0; i < 36; i++) {
         const item = container.getItem(i);
-        if (sellableItems.hasOwnProperty(item?.typeId)) {
+        if (sellableItemsDB.has(item?.typeId)) {
             const container = player.getComponent('inventory')?.container;
             container.setItem(i, undefined)
-            var money = sellableItems[item.typeId] * item.amount;
+            var money = sellableItemsDB.get(item.typeId) * item.amount;
             addMoney(player, money, false);
             player.sendMessage(translate("sell.message", [item.amount.toString(), capitalizeEveryWord(item?.typeId), money.toString()]));
             selledItemCount += item.amount;
@@ -32,6 +38,29 @@ export function sellAll(player, container) {
         player.sendMessage(translate("sellall.message", [selledItemCount.toString(), totalMoney.toString()]));
     } else {
         player.sendMessage(translate("envanterinizde.satilabilecek.esya.bulunmuyor"));
+    }
+}
+
+export function addSell(player, price) {
+    sellableItemsDB.load();
+    const container = player.getComponent('inventory')?.container;
+    const item = container.getItem(player.selectedSlot);
+    if (item?.typeId) {
+        sellableItemsDB.set(item.typeId, price);
+        player.sendMessage(capitalizeEveryWord(item.typeId) + " satılabilecek eşyalar listesine " + price + "TL olarak eklendi.");
+    } else {
+        player.sendMessage("Elinizde eşya bulunmuyor.");
+    }
+}
+
+export function delSell(player) {
+    const container = player.getComponent('inventory')?.container;
+    const item = container.getItem(player.selectedSlot);
+    if (item?.typeId) {
+        sellableItemsDB.delete(item.typeId);
+        player.sendMessage(capitalizeEveryWord(item.typeId) + " satılabilecek eşyalar listesinden çıkartıldı.");
+    } else {
+        player.sendMessage("Elinizde eşya bulunmuyor.");
     }
 }
 
@@ -52,8 +81,4 @@ function translate(key, params) {
 
     }
     return { "translate": key };
-};
-
-const sellableItems = {
-    "minecraft:grass": 10, "minecraft:stone": 5, "minecraft:diamond_block": 99
 }

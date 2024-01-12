@@ -1,7 +1,6 @@
 import { JsonDatabase } from "./../database/database";
 
-const moneyDB = new JsonDatabase("moneyDatabase");
-moneyDB.load();
+const moneyDB = new JsonDatabase("moneyDatabase").load();
 
 export function getMoney(player) {
     return Number(moneyDB.get(player.name) ?? 0);
