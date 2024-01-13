@@ -18,6 +18,8 @@ Bu eklenti [Cloyun](https://www.youtube.com/cloyun) takipçileri için özel ola
 ### Satış Sistemi
 - #satel -> Elinizdeki eşya satılabiliyorsa satar
 - #sathepsi -> Envanterinizdeki satılabilecek tüm eşyaları satar
+- #satekle <fiyat> -> Elinizdeki eşyayı belirtiğiniz fiyata satılabilecek eşyalar listesine ekler
+- #satsil -> Elinizdeki eşyayı satılabilecek eşyalar listesinden siler
 
 ### Eklenecek Özellikler
 **Projenin Yıldız sayısı yanlarında yazan Yıldız sayılarına ulaştığı zaman eklenicektir!**
