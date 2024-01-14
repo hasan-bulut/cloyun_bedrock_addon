@@ -26,17 +26,22 @@ world.beforeEvents.chatSend.subscribe(event => {
                         sender.sendMessage(translate("bu.komudu.kullanma.iznin.yok"));
                         break;
                     }
+                    var amount = Number(msgList[2]);
+                    if (!Number.isInteger(amount)) {
+                        sender.sendMessage(translate("sadece.sayi.giriniz"));
+                        break;
+                    }
                     var targetName = msgList[1];
                     if (targetName == "@s") {
-                        setMoney(sender, Number(msgList[2]));
+                        setMoney(sender, amount);
                     } else if (targetName == "@a") {
                         world.getAllPlayers().forEach(player => {
-                            setMoney(player, Number(msgList[2]));
+                            setMoney(player, amount);
                         });
                     }
                     else {
                         if (world.getAllPlayers().some(player => player.name === targetName)) {
-                            setMoney(world.getPlayers({ name: targetName })[0], Number(msgList[2]));
+                            setMoney(world.getPlayers({ name: targetName })[0], amount);
                         } else {
                             sender.sendMessage(translate("bu.oyuncu.aktif.degil"));
                         }
@@ -47,17 +52,22 @@ world.beforeEvents.chatSend.subscribe(event => {
                         sender.sendMessage(translate("bu.komudu.kullanma.iznin.yok"));
                         break;
                     }
+                    var amount = Number(msgList[2]);
+                    if (!Number.isInteger(amount)) {
+                        sender.sendMessage(translate("sadece.sayi.giriniz"));
+                        break;
+                    }
                     var targetName = msgList[1];
                     if (targetName == "@s") {
-                        addMoney(sender, Number(msgList[2]));
+                        addMoney(sender, amount);
                     } else if (targetName == "@a") {
                         world.getAllPlayers().forEach(player => {
-                            addMoney(player, Number(msgList[2]));
+                            addMoney(player, amount);
                         });
                     }
                     else {
                         if (world.getAllPlayers().some(player => player.name === targetName)) {
-                            addMoney(world.getPlayers({ name: targetName })[0], Number(msgList[2]));
+                            addMoney(world.getPlayers({ name: targetName })[0], amount);
                         } else {
                             sender.sendMessage(translate("bu.oyuncu.aktif.degil"));
                         }
@@ -68,12 +78,17 @@ world.beforeEvents.chatSend.subscribe(event => {
                         sender.sendMessage(translate("bu.komudu.kullanma.iznin.yok"));
                         break;
                     }
+                    var amount = Number(msgList[2]);
+                    if (!Number.isInteger(amount)) {
+                        sender.sendMessage(translate("sadece.sayi.giriniz"));
+                        break;
+                    }
                     var targetName = msgList[1];
                     if (targetName == "@s") {
-                        removeMoney(sender, Number(msgList[2]));
+                        removeMoney(sender, amount);
                     } else {
                         if (world.getAllPlayers().some(player => player.name === targetName)) {
-                            removeMoney(world.getPlayers({ name: targetName })[0], Number(msgList[2]));
+                            removeMoney(world.getPlayers({ name: targetName })[0], amount);
                         } else {
                             sender.sendMessage(translate("bu.oyuncu.aktif.degil"));
                         }
@@ -83,6 +98,10 @@ world.beforeEvents.chatSend.subscribe(event => {
                     var playerName = msgList[1];
                     var amount = msgList[2];
                     if (world.getAllPlayers().some(player => player.name === playerName)) {
+                        if (!Number.isInteger(price)) {
+                            sender.sendMessage(translate("sadece.sayi.giriniz"));
+                            break;
+                        }
                         var targetPlayer = world.getPlayers({ name: playerName })[0];
                         removeMoney(sender, Number(amount), false);
                         addMoney(targetPlayer, Number(amount), false);
@@ -107,8 +126,12 @@ world.beforeEvents.chatSend.subscribe(event => {
                         sender.sendMessage(translate("bu.komudu.kullanma.iznin.yok"));
                         break;
                     }
-                    var price = msgList[1];
-                    addSell(sender, Number(price));
+                    var price = Number(msgList[1]);
+                    if (!Number.isInteger(price)) {
+                        sender.sendMessage(translate("sadece.sayi.giriniz"));
+                        break;
+                    }
+                    addSell(sender, price);
                     break;
                 case commands[8]: // #satsil
                     if (!sender.getTags().includes(cmdPerm)) {

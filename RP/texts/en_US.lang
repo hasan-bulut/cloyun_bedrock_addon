@@ -19,3 +19,7 @@ otosat.ayarlandi=§aAutomatic selling set to %2 for %1.
 satilabilecek.esyalar.eklendi=§aAdded %1 to the list of sellable items for %2TL.
 satilabilecek.esyalar.cikartildi=§cRemoved %1 from the list of sellable items.
 elinizde.esya.bulunmuyor=§eYou don't have any items in your hand.
+tamir.edildi=§aThe item in your hand has been repaired for %1TL.
+hasar.bulunmuyor=§eThere is no damage on the item in your hand.
+tamir.edilemez=§cThe item in your hand cannot be repaired.
+sadece.sayi.giriniz=§cPlease enter only numbers.

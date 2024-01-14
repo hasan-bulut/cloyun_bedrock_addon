@@ -84,12 +84,14 @@ system.runInterval(() => {
         const container = player.getComponent('inventory')?.container;
         for (let i = 0; i < 36; i++) {
             const item = container.getItem(i);
-            if (autoSellDB.get(player.name)[item?.typeId] && item.amount == item.maxAmount) {
-                const container = player.getComponent('inventory')?.container;
-                container.setItem(i, undefined)
-                var money = sellableItemsDB.get(item.typeId) * item.amount;
-                addMoney(player, money, false);
-                player.sendMessage(translate("sell.message", [item.amount.toString(), capitalizeEveryWord(item?.typeId), money.toString()]));
+            if (sellableItemsDB.has(item?.typeId)) {
+                if (autoSellDB.get(player.name)[item?.typeId] && item.amount == item.maxAmount) {
+                    const container = player.getComponent('inventory')?.container;
+                    container.setItem(i, undefined)
+                    var money = sellableItemsDB.get(item.typeId) * item.amount;
+                    addMoney(player, money, false);
+                    player.sendMessage(translate("sell.message", [item.amount.toString(), capitalizeEveryWord(item?.typeId), money.toString()]));
+                }
             }
         }
     });
