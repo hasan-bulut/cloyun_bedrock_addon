@@ -1,6 +1,6 @@
 import { world, system } from "@minecraft/server";
 import { getMoney, setMoney, addMoney, removeMoney } from "./economy/money";
-import { sellHand, sellAll, addSell, delSell } from "./economy/sell";
+import { sellHand, sellAll, addSell, delSell, autoSell } from "./economy/sell";
 import { commands_lang } from "./commands_lang";
 
 const commandPrefix = "#";
@@ -115,6 +115,16 @@ world.beforeEvents.chatSend.subscribe(event => {
                         break;
                     }
                     delSell(sender);
+                    break;
+                case commands[9]: // #otosat
+                    var status = msgList[1];
+                    if (status == "true") {
+                        autoSell(sender, true);
+                    } else if (status == "false") {
+                        autoSell(sender, false);
+                    } else {
+                        sender.sendMessage("Etkinleştirmek için #otosat true, Pasifleştirmek için #otosat false yazınız!");
+                    }
                     break;
             }
         })

@@ -4,6 +4,8 @@ import { JsonDatabase } from "./../database/database";
 
 const sellableItemsDB = new JsonDatabase("sellableItem").load();
 
+const autoSellDB = new JsonDatabase("autoSell").load();
+
 export function sellHand(player) {
     const container = player.getComponent('inventory')?.container;
     const item = container.getItem(player.selectedSlot);
@@ -63,6 +65,35 @@ export function delSell(player) {
         player.sendMessage("Elinizde eşya bulunmuyor.");
     }
 }
+
+export function autoSell(player, status) {
+    const container = player.getComponent('inventory')?.container;
+    const item = container.getItem(player.selectedSlot);
+    if (sellableItemsDB.has(item?.typeId)) {
+        var data = autoSellDB.get(player.name) ?? {};
+        data[item?.typeId] = status;
+        autoSellDB.set(player.name, data);
+        player.sendMessage(capitalizeEveryWord(item?.typeId) + " için otomatik satma " + status.toString() + " olarak ayarlandı.");
+    } else {
+        player.sendMessage(translate("bu.esya.satilmiyor"));
+    }
+}
+
+system.runInterval(() => {
+    world.getAllPlayers().forEach(player => {
+        const container = player.getComponent('inventory')?.container;
+        for (let i = 0; i < 36; i++) {
+            const item = container.getItem(i);
+            if (autoSellDB.get(player.name)[item?.typeId] && item.amount == item.maxAmount) {
+                const container = player.getComponent('inventory')?.container;
+                container.setItem(i, undefined)
+                var money = sellableItemsDB.get(item.typeId) * item.amount;
+                addMoney(player, money, false);
+                player.sendMessage(translate("sell.message", [item.amount.toString(), capitalizeEveryWord(item?.typeId), money.toString()]));
+            }
+        }
+    });
+}, 20)
 
 function capitalizeEveryWord(itemName) {
     itemName = itemName.replace("minecraft:", "");
