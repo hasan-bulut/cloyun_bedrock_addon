@@ -1,6 +1,7 @@
 import { world, system } from "@minecraft/server";
 import { getMoney, setMoney, addMoney, removeMoney } from "./economy/money";
 import { sellHand, sellAll, addSell, delSell, autoSell } from "./economy/sell";
+import { repair } from "./general/repair";
 import { commands_lang } from "./commands_lang";
 
 const commandPrefix = "#";
@@ -125,6 +126,11 @@ world.beforeEvents.chatSend.subscribe(event => {
                     } else {
                         sender.sendMessage("Etkinleştirmek için #otosat true, Pasifleştirmek için #otosat false yazınız!");
                     }
+                    break;
+                case commands[10]: // #tamir
+                    system.run(() => {
+                        repair(sender);
+                    });
                     break;
             }
         })

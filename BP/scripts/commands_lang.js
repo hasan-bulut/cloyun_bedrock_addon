@@ -10,6 +10,7 @@ export const commands_lang = [
         "satekle",
         "satsil",
         "otosat",
+        "tamir"
     ],
     [ // English Commands
         "mymoney",
@@ -22,5 +23,6 @@ export const commands_lang = [
         "addsell",
         "delsell",
         "autosell",
+        "repair"
     ]
 ]
