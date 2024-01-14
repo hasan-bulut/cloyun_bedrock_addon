@@ -10,17 +10,17 @@ Bu eklenti [Cloyun](https://www.youtube.com/cloyun) takipçileri için özel ola
 **Tüm komutların prefixi '#'tir! Eklentinin içinden değiştirebilirsiniz.**
 ### Para Sistemi
 - #param -> Paranızı gösterir
-- #paragonder <oyuncu_ismi> <miktar> -> Belirtiğiniz kişiye kendi paranızdan gönderir
-- #paraekle <@s, @a, oyuncu_ismi> <miktar> -> Belirtiğiniz kişiye para ekler **('cmdPerm' tagı olanlar kullanabilir!)**
-- #parasil <@s, oyuncu_ismi> <miktar> -> Belirtiğiniz kişinin parasını siler **('cmdPerm' tagı olanlar kullanabilir!)**
-- #paraayarla <@s, @a, oyuncu_ismi> <miktar> -> Belirtiğiniz kişinin parasını ayarlar **('cmdPerm' tagı olanlar kullanabilir!)**
+- #paragonder <*oyuncu_ismi*> <*miktar*> -> Belirtiğiniz kişiye kendi paranızdan gönderir
+- #paraekle <*@s, @a, oyuncu_ismi*> <*miktar*> -> Belirtiğiniz kişiye para ekler **('cmdPerm' tagı olanlar kullanabilir!)**
+- #parasil <*@s, oyuncu_ismi*> <*miktar*> -> Belirtiğiniz kişinin parasını siler **('cmdPerm' tagı olanlar kullanabilir!)**
+- #paraayarla <*@s, @a, oyuncu_ismi*> <*miktar*> -> Belirtiğiniz kişinin parasını ayarlar **('cmdPerm' tagı olanlar kullanabilir!)**
 
 ### Satış Sistemi
 - #satel -> Elinizdeki eşya satılabiliyorsa satar
 - #sathepsi -> Envanterinizdeki satılabilecek tüm eşyaları satar
-- #satekle <fiyat> -> Elinizdeki eşyayı belirtiğiniz fiyata satılabilecek eşyalar listesine ekler **('cmdPerm' tagı olanlar kullanabilir!)**
+- #satekle <*fiyat*> -> Elinizdeki eşyayı belirtiğiniz fiyata satılabilecek eşyalar listesine ekler **('cmdPerm' tagı olanlar kullanabilir!)**
 - #satsil -> Elinizdeki eşyayı satılabilecek eşyalar listesinden siler **('cmdPerm' tagı olanlar kullanabilir!)**
-- #otosat <true, false> -> Elinizdeki eşya eğer satılabiliyorsa otomatik satış durumunu ayarlar. (true ise açılır, false ise kapanır)
+- #otosat <*true, false*> -> Elinizdeki eşya eğer satılabiliyorsa otomatik satış durumunu ayarlar. (true ise açılır, false ise kapanır)
 
 ### Tamir Sistemi
 - #tamir -> Elinizdeki eşya hasar aldıysa onu para karşılığında tamir eder
