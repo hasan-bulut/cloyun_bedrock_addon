@@ -49,9 +49,9 @@ export function addSell(player, price) {
     const item = container.getItem(player.selectedSlot);
     if (item?.typeId) {
         sellableItemsDB.set(item.typeId, price);
-        player.sendMessage(capitalizeEveryWord(item.typeId) + " satılabilecek eşyalar listesine " + price + "TL olarak eklendi.");
+        player.sendMessage(translate("satilabilecek.esyalar.eklendi", [capitalizeEveryWord(item.typeId), price.toString()]));
     } else {
-        player.sendMessage("Elinizde eşya bulunmuyor.");
+        player.sendMessage(translate("elinizde.esya.bulunmuyor"));
     }
 }
 
@@ -60,9 +60,9 @@ export function delSell(player) {
     const item = container.getItem(player.selectedSlot);
     if (item?.typeId) {
         sellableItemsDB.delete(item.typeId);
-        player.sendMessage(capitalizeEveryWord(item.typeId) + " satılabilecek eşyalar listesinden çıkartıldı.");
+        player.sendMessage(translate("satilabilecek.esyalar.cikartildi", [capitalizeEveryWord(item.typeId)]));
     } else {
-        player.sendMessage("Elinizde eşya bulunmuyor.");
+        player.sendMessage(translate("elinizde.esya.bulunmuyor"));
     }
 }
 
@@ -73,7 +73,7 @@ export function autoSell(player, status) {
         var data = autoSellDB.get(player.name) ?? {};
         data[item?.typeId] = status;
         autoSellDB.set(player.name, data);
-        player.sendMessage(capitalizeEveryWord(item?.typeId) + " için otomatik satma " + status.toString() + " olarak ayarlandı.");
+        player.sendMessage(translate("otosat.ayarlandi", [capitalizeEveryWord(item?.typeId), status.toString()]));
     } else {
         player.sendMessage(translate("bu.esya.satilmiyor"));
     }

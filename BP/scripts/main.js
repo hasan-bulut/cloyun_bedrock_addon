@@ -86,8 +86,8 @@ world.beforeEvents.chatSend.subscribe(event => {
                         var targetPlayer = world.getPlayers({ name: playerName })[0];
                         removeMoney(sender, Number(amount), false);
                         addMoney(targetPlayer, Number(amount), false);
-                        sender.sendMessage(targetPlayer.name + " kişisine " + amount + "TL gönderildi.");
-                        targetPlayer.sendMessage(sender.name + ", sana " + amount + "TL gönderdi.");
+                        sender.sendMessage(translate("para.gonderildi", [targetPlayer.name, amount.toString()]));
+                        targetPlayer.sendMessage(translate("para.gonderdi", [sender.name, amount.toString()]));
                     } else {
                         sender.sendMessage(translate("bu.oyuncu.aktif.degil"));
                     }
@@ -124,7 +124,7 @@ world.beforeEvents.chatSend.subscribe(event => {
                     } else if (status == "false") {
                         autoSell(sender, false);
                     } else {
-                        sender.sendMessage("Etkinleştirmek için #otosat true, Pasifleştirmek için #otosat false yazınız!");
+                        sender.sendMessage(translate("otosat.msg"));
                     }
                     break;
                 case commands[10]: // #tamir

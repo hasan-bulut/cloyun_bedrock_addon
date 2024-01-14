@@ -14,10 +14,18 @@ export function repair(player) {
 
         container.setItem(player.selectedSlot, newItem);
         removeMoney(player, damage * 3, false);
-        player.sendMessage("Elinizdeki eşya " + (damage * 3).toString() + "TL'ye tamir edildi.");
+        player.sendMessage(translate("tamir.edildi", [(damage * 3).toString()]));
     } else if (damage == 0) {
-        player.sendMessage("Elinizdeki eşyada hasar bulunmuyor.");
+        player.sendMessage(translate("hasar.bulunmuyor"));
     } else {
-        player.sendMessage("Elinizdeki eşya tamir edilemez.");
+        player.sendMessage(translate("tamir.edilemez"));
     }
+}
+
+function translate(key, params) {
+    if (params?.length > 0) {
+        return { "translate": key, "with": params };
+
+    }
+    return { "translate": key };
 }
