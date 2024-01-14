@@ -18,14 +18,18 @@ Bu eklenti [Cloyun](https://www.youtube.com/cloyun) takipçileri için özel ola
 ### Satış Sistemi
 - #satel -> Elinizdeki eşya satılabiliyorsa satar
 - #sathepsi -> Envanterinizdeki satılabilecek tüm eşyaları satar
-- #satekle <fiyat> -> Elinizdeki eşyayı belirtiğiniz fiyata satılabilecek eşyalar listesine ekler
-- #satsil -> Elinizdeki eşyayı satılabilecek eşyalar listesinden siler
+- #satekle <fiyat> -> Elinizdeki eşyayı belirtiğiniz fiyata satılabilecek eşyalar listesine ekler **('cmdPerm' tagı olanlar kullanabilir!)**
+- #satsil -> Elinizdeki eşyayı satılabilecek eşyalar listesinden siler **('cmdPerm' tagı olanlar kullanabilir!)**
+- #otosat <true, false> -> Elinizdeki eşya eğer satılabiliyorsa otomatik satış durumunu ayarlar. (true ise açılır, false ise kapanır)
+
+### Tamir Sistemi
+- #tamir -> Elinizdeki eşya hasar aldıysa onu para karşılığında tamir eder
 
 ### Eklenecek Özellikler
 **Projenin Yıldız sayısı yanlarında yazan Yıldız sayılarına ulaştığı zaman eklenicektir!**
-- **Satış Sistemi** -> Otosat 🌟5
-- Tamir Sistemi 🌟7
-- Market Sistemi 🌟12
-- Takas Sistemi 🌟20
+- Eldeki Eşyanın ve Zırhların Hasar Göstergeleri 🌟11
+- Ayarlar Menüsü 🌟14
+- Market Sistemi 🌟17
+- Takas Sistemi 🌟25
 - ChestShop 🌟30
 - [Discord Sunucumuzda İsteklerini Belirtebilirsin](https://discord.gg/gj9CmAAGDS)
